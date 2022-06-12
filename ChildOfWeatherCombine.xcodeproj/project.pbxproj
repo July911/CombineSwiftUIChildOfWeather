@@ -51,6 +51,9 @@
 		18CE4F3228557069004AAD32 /* ChildOfWeatherCombine */ = {
 			isa = PBXGroup;
 			children = (
+				18CE4F432855723B004AAD32 /* Data */,
+				18CE4F4228557236004AAD32 /* Presentation */,
+				18CE4F4128557232004AAD32 /* Domain */,
 				18CE4F3328557069004AAD32 /* ChildOfWeatherCombineApp.swift */,
 				18CE4F3528557069004AAD32 /* ContentView.swift */,
 				18CE4F372855706B004AAD32 /* Assets.xcassets */,
@@ -65,6 +68,27 @@
 				18CE4F3A2855706B004AAD32 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		18CE4F4128557232004AAD32 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		18CE4F4228557236004AAD32 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		18CE4F432855723B004AAD32 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Data;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
