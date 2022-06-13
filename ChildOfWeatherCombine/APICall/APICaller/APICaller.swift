@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class URLSessionService: URLSessionService {
+final class URLSessionService: URLSessionServiceProtocol {
     
     let session = URLSession.shared
     
