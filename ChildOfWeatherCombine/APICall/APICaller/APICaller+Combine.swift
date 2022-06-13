@@ -10,7 +10,11 @@ import Combine
 
 extension URLSessionServiceProtocol {
     
-    func requestCombine<T: APIRequest>(request: T) -> AnyPublisher<T, Never> {
-        self.request()
+    func requestCombine<T: APIRequest>(request: T) -> AnyPublisher<T.ResponseType, Error> {
+            return URLSession.shared.dataTaskPublisher(for: request.urlRequest!)
+                .requestJSON()
     }
 }
+
+
+
