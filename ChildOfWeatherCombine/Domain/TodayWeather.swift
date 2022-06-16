@@ -15,3 +15,10 @@ struct TodayWeather {
     let sunset: Int
     let description: String
 }
+
+extension TodayWeather {
+    
+    static var empty: TodayWeather {
+        TodayWeather(maxTemperature: .zero, minTemperature: .zero, sunrise: .zero, sunset: .zero, description: "empty description")
+    }
+}
