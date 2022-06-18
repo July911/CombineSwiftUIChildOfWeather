@@ -21,6 +21,10 @@
 		1885391E2857D05A009572EF /* TodayWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1885391D2857D059009572EF /* TodayWeather.swift */; };
 		188539202857D0C0009572EF /* FetchWeatherUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1885391F2857D0C0009572EF /* FetchWeatherUseCase.swift */; };
 		188539222857D147009572EF /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188539212857D147009572EF /* DetailViewModel.swift */; };
+		18A821A0285E975600563FC3 /* CityListRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A8219F285E975600563FC3 /* CityListRepository.swift */; };
+		18A821A2285E977500563FC3 /* DefaultCityListRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A821A1285E977500563FC3 /* DefaultCityListRepository.swift */; };
+		18A821A4285E979800563FC3 /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A821A3285E979800563FC3 /* City.swift */; };
+		18A821A6285E98A600563FC3 /* CityListUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A821A5285E98A500563FC3 /* CityListUseCase.swift */; };
 		18CE4F3428557069004AAD32 /* ChildOfWeatherCombineApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CE4F3328557069004AAD32 /* ChildOfWeatherCombineApp.swift */; };
 		18CE4F3628557069004AAD32 /* CityListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CE4F3528557069004AAD32 /* CityListView.swift */; };
 		18CE4F382855706B004AAD32 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18CE4F372855706B004AAD32 /* Assets.xcassets */; };
@@ -43,6 +47,10 @@
 		1885391D2857D059009572EF /* TodayWeather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayWeather.swift; sourceTree = "<group>"; };
 		1885391F2857D0C0009572EF /* FetchWeatherUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchWeatherUseCase.swift; sourceTree = "<group>"; };
 		188539212857D147009572EF /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
+		18A8219F285E975600563FC3 /* CityListRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityListRepository.swift; sourceTree = "<group>"; };
+		18A821A1285E977500563FC3 /* DefaultCityListRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultCityListRepository.swift; sourceTree = "<group>"; };
+		18A821A3285E979800563FC3 /* City.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
+		18A821A5285E98A500563FC3 /* CityListUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityListUseCase.swift; sourceTree = "<group>"; };
 		18CE4F3028557069004AAD32 /* ChildOfWeatherCombine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChildOfWeatherCombine.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18CE4F3328557069004AAD32 /* ChildOfWeatherCombineApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChildOfWeatherCombineApp.swift; sourceTree = "<group>"; };
 		18CE4F3528557069004AAD32 /* CityListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityListView.swift; sourceTree = "<group>"; };
@@ -74,6 +82,7 @@
 		186A1E2B285AF65700255EE4 /* CityListView */ = {
 			isa = PBXGroup;
 			children = (
+				18A821A7285E9A0900563FC3 /* ViewModel */,
 				18CE4F3528557069004AAD32 /* CityListView.swift */,
 			);
 			path = CityListView;
@@ -129,6 +138,7 @@
 			isa = PBXGroup;
 			children = (
 				1885391A2857CD46009572EF /* WeatherRepository.swift */,
+				18A8219F285E975600563FC3 /* CityListRepository.swift */,
 			);
 			path = InterFace;
 			sourceTree = "<group>";
@@ -137,8 +147,16 @@
 			isa = PBXGroup;
 			children = (
 				18CE4F452855E0FF004AAD32 /* WeatherInformation.swift */,
+				18A821A3285E979800563FC3 /* City.swift */,
 			);
 			path = Entity;
+			sourceTree = "<group>";
+		};
+		18A821A7285E9A0900563FC3 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		18CE4F2728557069004AAD32 = {
@@ -186,6 +204,7 @@
 				188539192857CD37009572EF /* InterFace */,
 				1885391D2857D059009572EF /* TodayWeather.swift */,
 				1885391F2857D0C0009572EF /* FetchWeatherUseCase.swift */,
+				18A821A5285E98A500563FC3 /* CityListUseCase.swift */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -204,6 +223,7 @@
 			children = (
 				1885391C2857CE1F009572EF /* Entity */,
 				188539172857CD1A009572EF /* DefaultWeatherRepository.swift */,
+				18A821A1285E977500563FC3 /* DefaultCityListRepository.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -292,13 +312,17 @@
 				188539122857B992009572EF /* APICaller+Combine.swift in Sources */,
 				188539062857B848009572EF /* URLSessionServiceProtocol.swift in Sources */,
 				188539162857BDAA009572EF /* Publisher+Extension.swift in Sources */,
+				18A821A4285E979800563FC3 /* City.swift in Sources */,
 				18CE4F462855E0FF004AAD32 /* WeatherInformation.swift in Sources */,
+				18A821A2285E977500563FC3 /* DefaultCityListRepository.swift in Sources */,
+				18A821A0285E975600563FC3 /* CityListRepository.swift in Sources */,
 				1885391E2857D05A009572EF /* TodayWeather.swift in Sources */,
 				186A1E2D285AF67300255EE4 /* DetailWeatherView.swift in Sources */,
 				18CE4F3428557069004AAD32 /* ChildOfWeatherCombineApp.swift in Sources */,
 				188539182857CD1A009572EF /* DefaultWeatherRepository.swift in Sources */,
 				188539082857B869009572EF /* APIRequest.swift in Sources */,
 				188539102857B944009572EF /* HTTPMethod.swift in Sources */,
+				18A821A6285E98A600563FC3 /* CityListUseCase.swift in Sources */,
 				1885390E2857B915009572EF /* CityWeatherRequest.swift in Sources */,
 				1885390B2857B8F4009572EF /* QueryParameters.swift in Sources */,
 				188539042857B78F009572EF /* URLSessionService.swift in Sources */,
