@@ -31,7 +31,7 @@ final class CityListViewModel: ObservableObject, CityListViewModelInput, CityLis
         self.coordinator = coordinator
     }
     
-    private func fetchCityList() {
+    func fetchCityList() {
         self.cityListUseCase.fetchCities()
             .assign(to: \.cities, on: self)
             .store(in: &self.bag)

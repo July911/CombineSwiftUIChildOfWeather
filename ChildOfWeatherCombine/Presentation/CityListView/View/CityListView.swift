@@ -9,14 +9,38 @@ import SwiftUI
 
 struct CityListView: View {
     
+    @ObservedObject var viewModel: CityListViewModel
+    
+    init(viewModel: CityListViewModel) {
+        self.viewModel = viewModel
+    }
+    
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        NavigationView {
+            List {
+                ForEach(self.viewModel.cities) { city in
+                    NavigationLink {
+                        //TODO: viewModel 구현
+                    } label: {
+                        VStack(alignment: .leading) {
+                            Text(city.name)
+                                .font(.title)
+                                .bold()
+                        }
+                    }
+                    .padding()
+                }
+            }
+            .navigationTitle("전국의 날씨")
+        }
+        .onAppear {
+            self.viewModel.fetchCityList()
+        }
     }
 }
 
 struct CityListView_Previews: PreviewProvider {
     static var previews: some View {
-        CityListView()
+        CityListView(viewModel: CityListViewModel(cityListUseCase: CityListUseCase(repository: DefaultCityListRepository()), coordinator: ))
     }
 }
