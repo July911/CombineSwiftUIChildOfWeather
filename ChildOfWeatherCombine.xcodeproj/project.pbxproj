@@ -198,6 +198,13 @@
 			path = Coordinator;
 			sourceTree = "<group>";
 		};
+		18CB3443285EF1FB00874689 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Utility;
+			sourceTree = "<group>";
+		};
 		18CE4F2728557069004AAD32 = {
 			isa = PBXGroup;
 			children = (
@@ -217,6 +224,7 @@
 		18CE4F3228557069004AAD32 /* ChildOfWeatherCombine */ = {
 			isa = PBXGroup;
 			children = (
+				18CB3443285EF1FB00874689 /* Utility */,
 				18CE4F442855E0E5004AAD32 /* Core */,
 				188539142857BD9A009572EF /* Extension */,
 				188539022857B77D009572EF /* APICall */,

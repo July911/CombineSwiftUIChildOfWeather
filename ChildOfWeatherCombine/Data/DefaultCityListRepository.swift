@@ -10,23 +10,33 @@ import Combine
 
 final actor DefaultCityListRepository: CityListRepository {
     
-    var cityList: [City]?
+    let cityList: [City]
     
     init() {
         self.cityList = self.fetchCity()
     }
     
-    func fetchCityList() -> AnyPublisher<[City], Never> {
-        guard let cityLists = self.cityList
-        else {
-            return Just([])
-        }
-        
-        return Just(self.cityList)
+    nonisolated func fetchCityList() -> AnyPublisher<[City], Never> {
+        return Just(cityList).eraseToAnyPublisher()
     }
     
     private func fetchCity() -> [City] {
+        guard let path = Bundle.main.url(forResource: "city", withExtension: "list")
+        else {
+            return []
+        }
         
-        return []
+        guard let data = try? Data(contentsOf: path)
+        else {
+            return []
+        }
+        
+        guard let cities = try? JSONDecoder().decode([City].self, from: data)
+        else {
+            return []
+        }
+        
+        return cities
     }
+    
 }
