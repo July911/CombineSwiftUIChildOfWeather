@@ -164,6 +164,15 @@
 			path = Entity;
 			sourceTree = "<group>";
 		};
+		18864CD7285FF9ED00DFABD4 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				188539172857CD1A009572EF /* DefaultWeatherRepository.swift */,
+				18A821A1285E977500563FC3 /* DefaultCityListRepository.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
 		18A821A7285E9A0900563FC3 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -276,9 +285,8 @@
 		18CE4F432855723B004AAD32 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				18864CD7285FF9ED00DFABD4 /* Repository */,
 				1885391C2857CE1F009572EF /* Entity */,
-				188539172857CD1A009572EF /* DefaultWeatherRepository.swift */,
-				18A821A1285E977500563FC3 /* DefaultCityListRepository.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";

@@ -16,6 +16,10 @@ struct City: Decodable {
     let coord: Coord
 }
 
+extension City: Identifiable {
+   
+}
+
 extension City {
     static let EMPTY = City(
         id: .zero,

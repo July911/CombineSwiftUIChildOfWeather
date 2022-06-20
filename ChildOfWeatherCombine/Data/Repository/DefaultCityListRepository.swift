@@ -38,5 +38,4 @@ final actor DefaultCityListRepository: CityListRepository {
         
         return cities
     }
-    
 }

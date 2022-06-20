@@ -21,14 +21,11 @@ final class CityListViewModel: ObservableObject, CityListViewModelInput, CityLis
     @Published var cities: [City] = []
     private let cityListUseCase: CityListUseCase
     private var bag = Set<AnyCancellable>()
-    private let coordinator: Coordinator 
     
     init(
-        cityListUseCase: CityListUseCase,
-        coordinator: Coordinator
+        cityListUseCase: CityListUseCase
     ) {
         self.cityListUseCase = cityListUseCase
-        self.coordinator = coordinator
     }
     
     func fetchCityList() {

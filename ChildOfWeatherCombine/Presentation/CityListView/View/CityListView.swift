@@ -41,6 +41,6 @@ struct CityListView: View {
 
 struct CityListView_Previews: PreviewProvider {
     static var previews: some View {
-        CityListView(viewModel: CityListViewModel(cityListUseCase: CityListUseCase(repository: DefaultCityListRepository()), coordinator: ))
+        CityListView(viewModel: CityListViewModel(cityListUseCase: CityListUseCase(repository: DefaultCityListRepository())))
     }
 }
