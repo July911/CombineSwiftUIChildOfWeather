@@ -10,14 +10,14 @@ import Combine
 
 final actor DefaultCityListRepository: CityListRepository {
     
-    let cityList: [City]
-    
+    private var cityList: [City]?
+    //TODO: 계층 하나 더 만들어서 City를 래핑 가능 하게 만들어줌 
     init() {
         self.cityList = self.fetchCity()
     }
     
     nonisolated func fetchCityList() -> AnyPublisher<[City], Never> {
-        return Just(cityList).eraseToAnyPublisher()
+        return Just(cityList!).eraseToAnyPublisher()
     }
     
     private func fetchCity() -> [City] {
