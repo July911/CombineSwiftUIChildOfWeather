@@ -12,13 +12,25 @@ struct DetailWeatherView: View {
     @ObservedObject var viewModel: DetailViewModel
     
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-    }
+        NavigationView {
+            Text(self.viewModel.weather.sunrise.toKoreanTime.description)
+            Text(self.viewModel.weather.maxTemperature.toCelsius.description)
+            Text(self.viewModel.weather.minTemperature.toCelsius.description)
+            Text(self.viewModel.weather.sunset.toKoreanTime.description)
+        }
+        .navigationTitle("오늘의 날씨")
+        .font(.title)
+        .navigationBarBackButtonHidden(false)
+        .navigationBarTitleDisplayMode(.large)
+        .onAppear {
+            self.viewModel.fetchWeather()
+        }
+}
 }
 
 struct DetailWeatherView_Previews: PreviewProvider {
     static var previews: some View {
-        DetailWeatherView(viewModel: DetailViewModel(useCase:FetchWeatherUseCase(repository: DefaultWeatherRepository(service: URLSessionService())))
+        DetailWeatherView(viewModel: DetailViewModel(cityName: "오늘의 날씨", useCase:FetchWeatherUseCase(repository: DefaultWeatherRepository(service: URLSessionService())))
         )
     }
 }

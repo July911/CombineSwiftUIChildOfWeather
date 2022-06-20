@@ -20,7 +20,7 @@ struct CityListView: View {
             List {
                 ForEach(self.viewModel.cities) { city in
                     NavigationLink {
-                        //TODO: viewModel 구현
+                        DetailWeatherView(viewModel: DetailViewModel(cityName: city.name, useCase: FetchWeatherUseCase(repository: DefaultWeatherRepository(service: URLSessionService()))))
                     } label: {
                         VStack(alignment: .leading) {
                             Text(city.name)

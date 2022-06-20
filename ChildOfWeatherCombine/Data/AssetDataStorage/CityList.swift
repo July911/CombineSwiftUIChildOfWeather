@@ -1,23 +1,18 @@
 //
-//  DefaultCityListRepository.swift
+//  CityList.swift
 //  ChildOfWeatherCombine
 //
-//  Created by 조영민 on 2022/06/19.
+//  Created by 조영민 on 2022/06/20.
 //
 
 import Foundation
-import Combine
 
-final actor DefaultCityListRepository: CityListRepository {
+struct CityList {
     
-    let cityList: [City]
-
-    init(cityList: [City] = CityList().city ?? []) {
-        self.cityList = cityList
-    }
+    var city: [City]?
     
-    nonisolated func fetchCityList() -> AnyPublisher<[City], Never> {
-        return Just(cityList).eraseToAnyPublisher()
+    init() {
+        self.city = self.fetchCity()
     }
     
     private func fetchCity() -> [City] {

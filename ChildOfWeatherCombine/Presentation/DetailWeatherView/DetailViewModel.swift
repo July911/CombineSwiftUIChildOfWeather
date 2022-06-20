@@ -11,8 +11,9 @@ import Combine
 final class DetailViewModel: ObservableObject {
     
     @Published var weather: TodayWeather = TodayWeather.empty
-    let fetchWeatherUseCase: FetchWeatherUseCase
-    
+    let cityName: String
+    private let fetchWeatherUseCase: FetchWeatherUseCase
+    private var cancalBag = Set<AnyCancellable>()
     struct Input {
         var onAppear: AnyPublisher<Void,Never>
         var didSelectCell: AnyPublisher<IndexPath, Never>
@@ -22,7 +23,23 @@ final class DetailViewModel: ObservableObject {
         var weather: AnyPublisher<TodayWeather, Never>
     }
     
-    init(useCase: FetchWeatherUseCase) {
+    init(cityName: String, useCase: FetchWeatherUseCase) {
+        self.cityName = cityName
         self.fetchWeatherUseCase = useCase
+    }
+    
+    func fetchWeather() {
+        self.fetchWeatherUseCase.fetchWether(city: self.cityName)
+            .sink(receiveCompletion: { completion in
+                switch completion {
+                case .finished:
+                    break
+                case .failure(_):
+                    break
+                }
+            }, receiveValue: { todayWeather in
+                self.weather = todayWeather
+            }
+            ).store(in: &self.cancalBag)
     }
 }
