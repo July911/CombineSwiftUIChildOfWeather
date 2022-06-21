@@ -8,20 +8,21 @@
 import Foundation
 import Combine
 
-final class DetailViewModel: ObservableObject {
+protocol DetailViewModelInput {
+    var cityName: String { get }
+    var weather: TodayWeather { get set }
+}
+
+protocol DetailViewModelOutput {
+    func fetchWeather()
+}
+
+final class DetailViewModel: ObservableObject, DetailViewModelInput, DetailViewModelOutput {
     
     @Published var weather: TodayWeather = TodayWeather.empty
     let cityName: String
     private let fetchWeatherUseCase: FetchWeatherUseCase
     private var cancalBag = Set<AnyCancellable>()
-    struct Input {
-        var onAppear: AnyPublisher<Void,Never>
-        var didSelectCell: AnyPublisher<IndexPath, Never>
-    }
-    
-    struct Output {
-        var weather: AnyPublisher<TodayWeather, Never>
-    }
     
     init(cityName: String, useCase: FetchWeatherUseCase) {
         self.cityName = cityName
