@@ -22,10 +22,10 @@ final class AppDIContainer {
         return viewModel
     }
     
-    func detailWeatherDependencies(city: City) -> DetailViewModel {
+    func detailWeatherDependencies() -> DetailViewModel {
         let dataStorage = DefaultWeatherRepository(service: self.urlSessionService)
         let useCase = FetchWeatherUseCase(repository: dataStorage)
-        let viewModel = DetailViewModel(cityName: city.name, useCase: useCase)
+        let viewModel = DetailViewModel(useCase: useCase)
         
         return viewModel
     }

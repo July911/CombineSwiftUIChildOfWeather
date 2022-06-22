@@ -9,28 +9,25 @@ import Foundation
 import Combine
 
 protocol DetailViewModelInput {
-    var cityName: String { get }
     var weather: TodayWeather { get set }
 }
 
 protocol DetailViewModelOutput {
-    func fetchWeather()
+    func fetchWeather(city: City)
 }
 
 final class DetailViewModel: ObservableObject, DetailViewModelInput, DetailViewModelOutput {
     
     @Published var weather: TodayWeather = TodayWeather.empty
-    let cityName: String
     private let fetchWeatherUseCase: FetchWeatherUseCase
     private var cancalBag = Set<AnyCancellable>()
     
-    init(cityName: String, useCase: FetchWeatherUseCase) {
-        self.cityName = cityName
+    init(useCase: FetchWeatherUseCase) {
         self.fetchWeatherUseCase = useCase
     }
     
-    func fetchWeather() {
-        self.fetchWeatherUseCase.fetchWether(city: self.cityName)
+    func fetchWeather(city: City) {
+        self.fetchWeatherUseCase.fetchWether(city: city.name)
             .sink(receiveCompletion: { completion in
                 switch completion {
                 case .finished:
@@ -39,6 +36,8 @@ final class DetailViewModel: ObservableObject, DetailViewModelInput, DetailViewM
                     break
                 }
             }, receiveValue: { todayWeather in
+                print(todayWeather.sunset)
+                print(todayWeather.description)
                 self.weather = todayWeather
             }
             ).store(in: &self.cancalBag)

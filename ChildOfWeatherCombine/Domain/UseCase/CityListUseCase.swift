@@ -16,7 +16,7 @@ final class CityListUseCase {
         self.repository = repository
     }
     
-    func fetchCities() -> AnyPublisher<[City], Never> {
-        self.repository.fetchCityList()
+    func fetchCities() async -> AnyPublisher<[City], Never> {
+        await self.repository.fetchCityList()
     }
 }

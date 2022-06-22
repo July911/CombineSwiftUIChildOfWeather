@@ -10,6 +10,7 @@ import SwiftUI
 struct CityListView: View {
     
     @ObservedObject var viewModel: CityListViewModel
+    private var clickedCity: City = City.EMPTY
     
     init(viewModel: CityListViewModel) {
         self.viewModel = viewModel
@@ -21,7 +22,7 @@ struct CityListView: View {
                 ForEach(self.viewModel.cities) { city in
                     CityListCell(city: city)
                     NavigationLink {
-                        DetailWeatherView(viewModel: DetailViewModel(cityName: city.name, useCase: FetchWeatherUseCase(repository: DefaultWeatherRepository(service: URLSessionService()))))
+                        DetailWeatherView(viewModel: AppDIContainer.shared.detailWeatherDependencies(), city: city)
                     } label: {
                         VStack(alignment: .leading) {
                             Text(city.name)
@@ -33,16 +34,19 @@ struct CityListView: View {
                 
                 }
             }
-            .navigationTitle("전국의 날씨")
+            .navigationTitle("도시리스트")
         }
         .onAppear {
-            self.viewModel.fetchCityList()
+            Task {
+            await self.viewModel.fetchCityList()
+            }
         }
     }
 }
 
 struct CityListView_Previews: PreviewProvider {
     static var previews: some View {
-        CityListView(viewModel: CityListViewModel(cityListUseCase: CityListUseCase(repository: DefaultCityListRepository())))
+        let viewModel = AppDIContainer.shared.cityListDependencies()
+        CityListView(viewModel: viewModel)
     }
 }

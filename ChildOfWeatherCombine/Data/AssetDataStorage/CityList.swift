@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 struct CityList {
     
@@ -16,19 +17,10 @@ struct CityList {
     }
     
     private func fetchCity() -> [City] {
-        guard let path = Bundle.main.url(forResource: "city", withExtension: "list")
+        let assetData = NSDataAsset(name: "city.list")
+        guard let cities = try? JSONDecoder().decode([City].self, from: assetData?.data ?? Data())
         else {
-            return []
-        }
-        
-        guard let data = try? Data(contentsOf: path)
-        else {
-            return []
-        }
-        
-        guard let cities = try? JSONDecoder().decode([City].self, from: data)
-        else {
-            return []
+            return [] 
         }
         
         return cities

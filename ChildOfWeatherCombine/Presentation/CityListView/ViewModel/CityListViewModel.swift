@@ -9,7 +9,7 @@ import Foundation
 import Combine
 
 protocol CityListViewModelInput {
-    func fetchWeather(cityName: String)
+    func fetchCityList() async
 }
 
 protocol CityListViewModelOutput {
@@ -28,13 +28,10 @@ final class CityListViewModel: ObservableObject, CityListViewModelInput, CityLis
         self.cityListUseCase = cityListUseCase
     }
     
-    func fetchCityList() {
-        self.cityListUseCase.fetchCities()
+    func fetchCityList() async {
+        await self.cityListUseCase.fetchCities()
             .assign(to: \.cities, on: self)
             .store(in: &self.bag)
-    }
-    
-    func fetchWeather(cityName: String) {
-        
+        print(cities)
     }
 }

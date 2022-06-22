@@ -10,5 +10,5 @@ import Combine
 
 protocol CityListRepository {
     
-    func fetchCityList() -> AnyPublisher<[City], Never>
+    func fetchCityList() async -> AnyPublisher<[City], Never>
 }

@@ -11,7 +11,8 @@ import SwiftUI
 struct ChildOfWeatherCombineApp: App {
     var body: some Scene {
         WindowGroup {
-            CityListView(viewModel: CityListViewModel(cityListUseCase: CityListUseCase(repository: DefaultCityListRepository())))
+            let viewModel = AppDIContainer.shared.cityListDependencies()
+            CityListView(viewModel: viewModel)
         }
     }
 }
