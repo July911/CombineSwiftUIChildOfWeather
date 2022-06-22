@@ -13,7 +13,8 @@ struct DetailWeatherView: View {
     let city: City
     
     var body: some View {
-        NavigationView {
+        VStack {
+            Text("도시의 이름은?\(city.name)")
             Text(self.viewModel.weather.sunrise.toKoreanTime.description)
                 .padding()
             Text(self.viewModel.weather.maxTemperature.toCelsius.description)
@@ -21,8 +22,11 @@ struct DetailWeatherView: View {
             Text(self.viewModel.weather.minTemperature.toCelsius.description)
             Text(self.viewModel.weather.sunset.toKoreanTime.description)
         }
+        .frame(width: 100, height: 500, alignment: .center)
         .onAppear {
-            self.viewModel.fetchWeather(city: city)
+            Task {
+                await self.viewModel.fetchWeather(city: city)
+            }
             print("도시의 이름은? \(city.name)")
         }
 }

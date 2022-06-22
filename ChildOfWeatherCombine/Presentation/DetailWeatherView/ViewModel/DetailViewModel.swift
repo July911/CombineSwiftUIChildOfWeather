@@ -13,7 +13,7 @@ protocol DetailViewModelInput {
 }
 
 protocol DetailViewModelOutput {
-    func fetchWeather(city: City)
+    func fetchWeather(city: City) async
 }
 
 final class DetailViewModel: ObservableObject, DetailViewModelInput, DetailViewModelOutput {
@@ -26,8 +26,8 @@ final class DetailViewModel: ObservableObject, DetailViewModelInput, DetailViewM
         self.fetchWeatherUseCase = useCase
     }
     
-    func fetchWeather(city: City) {
-        self.fetchWeatherUseCase.fetchWether(city: city.name)
+    func fetchWeather(city: City) async {
+        await self.fetchWeatherUseCase.fetchWether(city: city.name)
             .sink(receiveCompletion: { completion in
                 switch completion {
                 case .finished:

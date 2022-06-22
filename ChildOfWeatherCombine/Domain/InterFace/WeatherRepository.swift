@@ -10,7 +10,5 @@ import Combine
 
 protocol WeatherRepository {
     
-    func fetchWeather(
-        city: String
-    ) -> AnyPublisher<TodayWeather, Error>
+    func fetchWeather(city: String) async -> AnyPublisher<TodayWeather, Never>
 }

@@ -16,11 +16,17 @@ final class DefaultWeatherRepository: WeatherRepository {
         self.service = service
     }
     
-    func fetchWeather(city: String) -> AnyPublisher<TodayWeather, Error> {
+    func fetchWeather(city: String) async -> AnyPublisher<TodayWeather, Never> {
         let param = CityWeatherRequestParams(city: city)
         let request = CityWeatherRequest(method: .GET, params: param)
-        return self.service.requestCombine(request: request).tryMap {
-            $0.toDomain()
-        }.eraseToAnyPublisher()
+        guard let decoded = try? await self.service.request(requestType: request) else {
+            return Just(TodayWeather.empty).eraseToAnyPublisher()
+        }
+        
+//        guard let weather = decoded as? WeatherInformation else {
+//            return Just(TodayWeather.empty).eraseToAnyPublisher()
+//        }
+        
+        return Just(decoded.toDomain()).eraseToAnyPublisher()
     }
 }

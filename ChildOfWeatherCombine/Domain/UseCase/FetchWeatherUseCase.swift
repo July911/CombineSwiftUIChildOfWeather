@@ -16,7 +16,7 @@ final class FetchWeatherUseCase {
         self.repository = repository
     }
     
-    func fetchWether(city: String) -> AnyPublisher<TodayWeather, Error> {
-        self.repository.fetchWeather(city: city)
+    func fetchWether(city: String) async -> AnyPublisher<TodayWeather, Never> {
+        await self.repository.fetchWeather(city: city)
     }
 }

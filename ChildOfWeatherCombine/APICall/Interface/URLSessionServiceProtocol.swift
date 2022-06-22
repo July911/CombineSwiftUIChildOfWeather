@@ -10,7 +10,6 @@ import Foundation
 protocol URLSessionServiceProtocol {
     
     func request<T: APIRequest>(
-        requestType: T,
-        completion: @escaping (Result<T.ResponseType, APICallError>) -> Void
-    ) -> URLSessionDataTask?
+        requestType: T
+    ) async throws -> T.ResponseType
 }

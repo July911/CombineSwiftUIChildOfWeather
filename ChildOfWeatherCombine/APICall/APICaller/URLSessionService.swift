@@ -12,49 +12,24 @@ final class URLSessionService: URLSessionServiceProtocol {
     let session = URLSession.shared
     
     func request<T: APIRequest>(
-        requestType: T,
-        completion: @escaping (Result<T.ResponseType, APICallError>) -> Void
-    ) -> URLSessionDataTask? {
+        requestType: T
+    ) async throws -> T.ResponseType
+        {
         
         guard let request = requestType.urlRequest else {
-            completion(.failure(.errorExist))
-            return nil
+            throw APICallError.dataNotfetched
         }
-
-        let task = self.session.dataTask(with: request) { data, response, error in
             
-                guard error == nil else {
-                    completion(.failure(.errorExist))
-                    return
-                }
-                
-                guard let httpResponse = response as? HTTPURLResponse else {
-                    completion(.failure(.invalidResponse))
-                    return
-                }
-                
-                guard (200...299) ~= httpResponse.statusCode else {
-                    print(httpResponse.statusCode)
-                    completion(.failure(.notProperStatusCode(code: httpResponse.statusCode)))
-                    return
-                }
-                
-                guard let data = data else {
-                    completion(.failure(.dataNotfetched))
-                    return
-                }
-                
-                guard let parsed = try? JSONDecoder().decode(T.ResponseType.self, from: data) else {
-                    completion(.failure(.failureDecoding))
-                    return
-                }
-                
-                completion(.success(parsed))
-            }
+        guard let (data, response) = try? await session.data(for: request)
+            else {
+            throw APICallError.dataNotfetched
+        }
             
-        task.resume()
-        
-        return task
+        guard let decoded = try? JSONDecoder().decode(T.ResponseType.self, from: data) else {
+            throw APICallError.failureDecoding
+        }
+            
+        return decoded
     }
 }
 
