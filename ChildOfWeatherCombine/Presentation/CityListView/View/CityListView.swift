@@ -19,6 +19,7 @@ struct CityListView: View {
         NavigationView {
             List {
                 ForEach(self.viewModel.cities) { city in
+                    CityListCell(city: city)
                     NavigationLink {
                         DetailWeatherView(viewModel: DetailViewModel(cityName: city.name, useCase: FetchWeatherUseCase(repository: DefaultWeatherRepository(service: URLSessionService()))))
                     } label: {

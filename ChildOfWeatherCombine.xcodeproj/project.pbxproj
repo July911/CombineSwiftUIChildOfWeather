@@ -36,6 +36,7 @@
 		18CE4F3B2855706B004AAD32 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18CE4F3A2855706B004AAD32 /* Preview Assets.xcassets */; };
 		18CE4F462855E0FF004AAD32 /* WeatherInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CE4F452855E0FF004AAD32 /* WeatherInformation.swift */; };
 		18D35FB12862FB5600E9E4B7 /* AppDIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D35FB02862FB5600E9E4B7 /* AppDIContainer.swift */; };
+		18D35FB32862FDDE00E9E4B7 /* CityListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D35FB22862FDDE00E9E4B7 /* CityListCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -69,6 +70,7 @@
 		18CE4F3A2855706B004AAD32 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		18CE4F452855E0FF004AAD32 /* WeatherInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherInformation.swift; sourceTree = "<group>"; };
 		18D35FB02862FB5600E9E4B7 /* AppDIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDIContainer.swift; sourceTree = "<group>"; };
+		18D35FB22862FDDE00E9E4B7 /* CityListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityListCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -212,6 +214,7 @@
 			isa = PBXGroup;
 			children = (
 				18CE4F3528557069004AAD32 /* CityListView.swift */,
+				18D35FB22862FDDE00E9E4B7 /* CityListCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -406,6 +409,7 @@
 				18CE4F462855E0FF004AAD32 /* WeatherInformation.swift in Sources */,
 				18D35FB12862FB5600E9E4B7 /* AppDIContainer.swift in Sources */,
 				18A821A2285E977500563FC3 /* DefaultCityListRepository.swift in Sources */,
+				18D35FB32862FDDE00E9E4B7 /* CityListCell.swift in Sources */,
 				18CB344B285EF41700874689 /* DataFomatter.swift in Sources */,
 				18CB343F285EDF6A00874689 /* CityListViewModel.swift in Sources */,
 				18CB3449285EF3F800874689 /* Int+Extension.swift in Sources */,
