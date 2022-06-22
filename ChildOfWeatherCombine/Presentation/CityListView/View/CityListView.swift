@@ -26,9 +26,10 @@ struct CityListView: View {
                             Text(city.name)
                                 .font(.title)
                                 .bold()
+                                .fontWeight(.bold)
                         }
                     }
-                    .padding()
+                
                 }
             }
             .navigationTitle("전국의 날씨")
