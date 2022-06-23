@@ -10,6 +10,7 @@ import Combine
 
 protocol CityListViewModelInput {
     func fetchCityList() async
+    func searchCityList(cityName: String) async
 }
 
 protocol CityListViewModelOutput {
@@ -19,6 +20,7 @@ protocol CityListViewModelOutput {
 final class CityListViewModel: ObservableObject, CityListViewModelInput, CityListViewModelOutput {
     
     @Published var cities: [City] = []
+    @Published var searchedCities: [City] = []
     private let cityListUseCase: CityListUseCase
     private var bag = Set<AnyCancellable>()
     
@@ -32,6 +34,15 @@ final class CityListViewModel: ObservableObject, CityListViewModelInput, CityLis
         await self.cityListUseCase.fetchCities()
             .assign(to: \.cities, on: self)
             .store(in: &self.bag)
-        print(cities)
+    }
+    
+    func searchCityList(cityName: String) async {
+        await self.cityListUseCase.fetchCities()
+            .map { cities in
+                cities.filter { city in
+                    city.name.first?.description == cityName
+                }
+            }.assign(to: \.searchedCities, on: self)
+            .store(in: &self.bag)
     }
 }

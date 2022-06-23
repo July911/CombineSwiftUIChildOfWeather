@@ -10,6 +10,8 @@ import SwiftUI
 struct CityListView: View {
     
     @ObservedObject var viewModel: CityListViewModel
+    @State private var isSeached: Bool = false
+    @State private var searchQuery: String = ""
     private var clickedCity: City = City.EMPTY
     
     init(viewModel: CityListViewModel) {
@@ -21,21 +23,31 @@ struct CityListView: View {
             List {
                 ForEach(self.viewModel.cities) { city in
                     CityListCell(city: city)
-                    NavigationLink {
-                        DetailWeatherView(viewModel: AppDIContainer.shared.detailWeatherDependencies(), city: city)
+                    NavigationLink { 
+                        DetailWeatherView(
+                            viewModel: AppDIContainer.shared.detailWeatherDependencies(),
+                            city: city
+                        )
                     } label: {
-                        VStack(alignment: .leading) {
-                            Text(city.name)
-                                .font(.title)
-                                .bold()
-                                .fontWeight(.bold)
-                        }
+                        Text("도시 리스트")
+                            .font(.title)
                     }
-                
                 }
             }
-            .navigationTitle("도시리스트")
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .navigationTitle("도시")
+            .shadow(color: Color.gray, radius: 10, x: 0.0, y: 10.0)
         }
+        .searchable(text: $searchQuery) {
+            ForEach(self.viewModel.searchedCities) { city in
+                CityListCell(city: city)
+            }
+        }
+        .onChange(of: searchQuery, perform: { querys in
+            self.viewModel.searchedCities = self.viewModel.cities.filter { city in
+                city.name.lowercased().contains(querys.lowercased())
+            }
+        })
         .onAppear {
             Task {
             await self.viewModel.fetchCityList()

@@ -15,21 +15,16 @@ struct CityListCell: View {
         HStack {
             VStack {
                 Text("도시의 이름은?")
-                    .background(Color.white)
                 Text(city.name)
             }
             
             Spacer()
             
-            Text("알아보러 가보기")
-                .fontWeight(.medium)
-                .multilineTextAlignment(.leading)
-                .font(.body)
-            
             Circle()
                 .trim()
                 .shadow(color: .gray, radius: 10, x: 0, y: 10.0)
-                .frame(width: 30, height: .infinity, alignment: .topTrailing)
+                .frame(width: 20, height: 20, alignment: .trailing)
+                .foregroundColor(Color.clear)
         }
         .background(Color.blue.opacity(0.5))
     }
