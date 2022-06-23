@@ -22,15 +22,13 @@ struct CityListView: View {
         NavigationView {
             List {
                 ForEach(self.viewModel.cities) { city in
-                    CityListCell(city: city)
                     NavigationLink { 
                         DetailWeatherView(
                             viewModel: AppDIContainer.shared.detailWeatherDependencies(),
                             city: city
                         )
                     } label: {
-                        Text("도시 리스트")
-                            .font(.title)
+                        CityListCell(city: city)
                     }
                 }
             }
