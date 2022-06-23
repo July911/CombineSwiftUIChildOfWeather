@@ -19,6 +19,12 @@ struct TodayWeather {
 extension TodayWeather {
     
     static var empty: TodayWeather {
-        TodayWeather(maxTemperature: .zero, minTemperature: .zero, sunrise: .zero, sunset: .zero, description: "empty description")
+        TodayWeather(
+            maxTemperature: .zero,
+            minTemperature: .zero,
+            sunrise: .zero,
+            sunset: .zero,
+            description: "empty description"
+        )
     }
 }

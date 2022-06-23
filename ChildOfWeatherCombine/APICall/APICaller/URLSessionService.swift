@@ -24,6 +24,11 @@ final class URLSessionService: URLSessionServiceProtocol {
             else {
             throw APICallError.dataNotfetched
         }
+        
+        guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200
+        else {
+            throw APICallError.notProperStatusCode
+        }
             
         guard let decoded = try? JSONDecoder().decode(T.ResponseType.self, from: data) else {
             throw APICallError.failureDecoding
@@ -38,7 +43,7 @@ enum APICallError: Error {
     case invalidResponse
     case errorExist
     case failureDecoding
-    case notProperStatusCode(code: Int)
+    case notProperStatusCode
     case dataNotfetched
 }
 
