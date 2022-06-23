@@ -15,7 +15,7 @@ struct CityListCell: View {
         HStack {
             VStack {
                 Text("도시의 이름은?")
-                Text(city.name)
+                Text(city.name.localized)
             }
             
             Spacer()
