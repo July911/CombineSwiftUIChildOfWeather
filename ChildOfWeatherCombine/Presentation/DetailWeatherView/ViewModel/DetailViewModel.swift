@@ -36,9 +36,9 @@ final class DetailViewModel: ObservableObject, DetailViewModelInput, DetailViewM
                     break
                 }
             }, receiveValue: { todayWeather in
-                print(todayWeather.sunset)
-                print(todayWeather.description)
-                self.weather = todayWeather
+                DispatchQueue.main.async { [weak self] in 
+                    self?.weather = todayWeather
+                }
             }
             ).store(in: &self.cancalBag)
     }

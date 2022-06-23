@@ -36,6 +36,7 @@
 		18CE4F462855E0FF004AAD32 /* WeatherInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CE4F452855E0FF004AAD32 /* WeatherInformation.swift */; };
 		18D35FB12862FB5600E9E4B7 /* AppDIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D35FB02862FB5600E9E4B7 /* AppDIContainer.swift */; };
 		18D35FB32862FDDE00E9E4B7 /* CityListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D35FB22862FDDE00E9E4B7 /* CityListCell.swift */; };
+		18DA9BA7286480D1005292F2 /* Task+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DA9BA6286480D1005292F2 /* Task+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -69,6 +70,7 @@
 		18CE4F452855E0FF004AAD32 /* WeatherInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherInformation.swift; sourceTree = "<group>"; };
 		18D35FB02862FB5600E9E4B7 /* AppDIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDIContainer.swift; sourceTree = "<group>"; };
 		18D35FB22862FDDE00E9E4B7 /* CityListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityListCell.swift; sourceTree = "<group>"; };
+		18DA9BA6286480D1005292F2 /* Task+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,6 +145,7 @@
 				188539152857BDAA009572EF /* Publisher+Extension.swift */,
 				18CB3446285EF3E400874689 /* Double+Extension.swift */,
 				18CB3448285EF3F800874689 /* Int+Extension.swift */,
+				18DA9BA6286480D1005292F2 /* Task+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -402,6 +405,7 @@
 				188539062857B848009572EF /* URLSessionServiceProtocol.swift in Sources */,
 				188539162857BDAA009572EF /* Publisher+Extension.swift in Sources */,
 				18A821A4285E979800563FC3 /* City.swift in Sources */,
+				18DA9BA7286480D1005292F2 /* Task+Extension.swift in Sources */,
 				18CE4F462855E0FF004AAD32 /* WeatherInformation.swift in Sources */,
 				18D35FB12862FB5600E9E4B7 /* AppDIContainer.swift in Sources */,
 				18A821A2285E977500563FC3 /* DefaultCityListRepository.swift in Sources */,

@@ -11,6 +11,7 @@ struct DetailWeatherView: View {
     
     @ObservedObject var viewModel: DetailViewModel
     let city: City
+    var bag = CancelTaskBag()
     
     var body: some View {
         ZStack {
@@ -43,14 +44,17 @@ struct DetailWeatherView: View {
         .onAppear {
             Task {
                 await self.viewModel.fetchWeather(city: city)
-            }
+            }.dispose(bag: self.bag)
+        }
+        .onDisappear {
+            self.bag.cancel()
         }
     }
 }
 
-struct DetailWeatherView_Previews: PreviewProvider {
-    static var previews: some View {
-        let viewModel = AppDIContainer.shared.detailWeatherDependencies()
-        DetailWeatherView(viewModel: viewModel, city: City.EMPTY)
-    }
-}
+//struct DetailWeatherView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        let viewModel = AppDIContainer.shared.detailWeatherDependencies()
+//        DetailWeatherView(viewModel: viewModel, city: City.EMPTY)
+//    }
+//}

@@ -13,6 +13,7 @@ struct CityListView: View {
     @State private var isSeached: Bool = false
     @State private var searchQuery: String = ""
     private var clickedCity: City = City.EMPTY
+    private var bag = CancelTaskBag()
     
     init(viewModel: CityListViewModel) {
         self.viewModel = viewModel
@@ -48,8 +49,11 @@ struct CityListView: View {
         })
         .onAppear {
             Task {
-            await self.viewModel.fetchCityList()
-            }
+                await self.viewModel.fetchCityList()
+            }.dispose(bag: self.bag)
+        }
+        .onDisappear {
+            self.bag.cancel()
         }
     }
 }
