@@ -10,7 +10,7 @@ import Foundation
 struct City: Decodable {
     
     let id: Int
-    let name: String
+    var name: String
     let state: String?
     let country: String
     let coord: Coord
@@ -32,4 +32,12 @@ extension City {
 
 struct Coord: Codable {
     let lat, lon: Double
+}
+
+extension City {
+    var koreanName: City {
+        var city = self
+        city.name = city.name.localized
+        return city
+    }
 }

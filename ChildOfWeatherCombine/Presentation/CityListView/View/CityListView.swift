@@ -20,10 +20,32 @@ struct CityListView: View {
     }
     
     var body: some View {
-        NavigationView {
+        NavigationListView()
+            .searchable(text: $searchQuery)
+            .onChange(of: searchQuery, perform: { querys in
+                if !querys.isEmpty {
+                    self.viewModel.searchedCities = self.viewModel.cities.filter { city in
+                        city.name.contains(querys.lowercased())
+                    }
+                } else {
+                    self.viewModel.searchedCities = self.viewModel.cities
+                }
+            })
+            .onAppear {
+                Task {
+                    await self.viewModel.fetchCityList()
+                }.dispose(bag: self.bag)
+            }
+            .onDisappear {
+                self.bag.cancel()
+            }
+    }
+    
+    func NavigationListView() -> some View {
+        return NavigationView {
             List {
-                ForEach(self.viewModel.cities) { city in
-                    NavigationLink { 
+                ForEach(self.viewModel.searchedCities) { city in
+                    NavigationLink {
                         DetailWeatherView(
                             viewModel: AppDIContainer.shared.detailWeatherDependencies(),
                             city: city
@@ -37,24 +59,6 @@ struct CityListView: View {
             .navigationTitle("도시")
             .shadow(color: Color.gray, radius: 10, x: 0.0, y: 10.0)
         }
-        .searchable(text: $searchQuery) {
-            ForEach(self.viewModel.searchedCities) { city in
-                CityListCell(city: city)
-            }
-        }
-        .onChange(of: searchQuery, perform: { querys in
-            self.viewModel.searchedCities = self.viewModel.cities.filter { city in
-                city.name.lowercased().contains(querys.lowercased())
-            }
-        })
-        .onAppear {
-            Task {
-                await self.viewModel.fetchCityList()
-            }.dispose(bag: self.bag)
-        }
-        .onDisappear {
-            self.bag.cancel()
-        }
     }
 }
 
@@ -64,3 +68,4 @@ struct CityListView_Previews: PreviewProvider {
         CityListView(viewModel: viewModel)
     }
 }
+

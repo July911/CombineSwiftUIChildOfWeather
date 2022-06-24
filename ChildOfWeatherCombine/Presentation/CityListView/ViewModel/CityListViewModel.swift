@@ -19,7 +19,11 @@ protocol CityListViewModelOutput {
 
 final class CityListViewModel: ObservableObject, CityListViewModelInput, CityListViewModelOutput {
     
-    @Published var cities: [City] = []
+    @Published var cities: [City] = [] {
+        willSet {
+            self.searchedCities = newValue
+        }
+    }
     @Published var searchedCities: [City] = []
     private let cityListUseCase: CityListUseCase
     private var bag = Set<AnyCancellable>()

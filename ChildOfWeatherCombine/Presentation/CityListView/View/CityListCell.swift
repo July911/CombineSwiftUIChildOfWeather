@@ -16,17 +16,20 @@ struct CityListCell: View {
             VStack {
                 Text("도시의 이름은?")
                 Text(city.name.localized)
+                    .fontWeight(.light)
+                    .font(.callout)
             }
             
             Spacer()
             
-            Circle()
-                .trim()
-                .shadow(color: .gray, radius: 10, x: 0, y: 10.0)
-                .frame(width: 20, height: 20, alignment: .trailing)
-                .foregroundColor(Color.clear)
         }
-        .background(Color.blue.opacity(0.5))
+        .background(
+            LinearGradient(
+                colors: [Color.clear, Color.gray, Color.white],
+                startPoint: .leading,
+                endPoint: .trailing
+            )
+        )
     }
 }
 

@@ -15,7 +15,6 @@ struct DetailWeatherView: View {
     
     var body: some View {
         ZStack {
-            Spacer()
             
             Rectangle()
                 .background(
@@ -41,6 +40,8 @@ struct DetailWeatherView: View {
             .font(.callout)
         }
         .frame(width: 300, height: 200, alignment: .center)
+        .cornerRadius(10.0)
+        Spacer()
         .onAppear {
             Task {
                 await self.viewModel.fetchWeather(city: city)
