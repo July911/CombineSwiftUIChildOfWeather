@@ -14,35 +14,37 @@ struct DetailWeatherView: View {
     var bag = CancelTaskBag()
     
     var body: some View {
-        ZStack {
-            RectangleView()
-            HStack {
-                VStack {
-                    Text("오늘의 일출은?\n오전 \(self.viewModel.weather.sunrise.toKoreanTime.description)시")
-                        .fontWeight(.bold)
-                        .font(.body)
-                    Text("오늘의 일몰은?\n오후 \(self.viewModel.weather.sunset.toKoreanTime.description)시")
-                        .fontWeight(.bold)
-                        .font(.body)
-                }
-                
-                VStack {
-                    Text("오늘의 최고온도는?\n\(self.viewModel.weather.maxTemperature.toCelsius.description)도")
-                        .fontWeight(.bold)
-                        .font(.body)
-                    Text("오늘의 최저온도는?\n\(self.viewModel.weather.minTemperature.toCelsius.description)도")
-                        .fontWeight(.bold)
-                        .font(.body)
+        NavigationView {
+            ZStack {
+                RectangleView()
+                HStack {
+                    VStack {
+                        Text("오늘의 일출은?\n오전 \(self.viewModel.weather.sunrise.toKoreanTime.description)시")
+                            .fontWeight(.bold)
+                            .font(.body)
+                        Text("오늘의 일몰은?\n오후 \(self.viewModel.weather.sunset.toKoreanTime.description)시")
+                            .fontWeight(.bold)
+                            .font(.body)
+                    }
+                    
+                    VStack {
+                        Text("오늘의 최고온도는?\n\(self.viewModel.weather.maxTemperature.toCelsius.description)도")
+                            .fontWeight(.bold)
+                            .font(.body)
+                        Text("오늘의 최저온도는?\n\(self.viewModel.weather.minTemperature.toCelsius.description)도")
+                            .fontWeight(.bold)
+                            .font(.body)
+                    }
                 }
             }
-            .font(.callout)
         }
+        Spacer()
+        .navigationTitle("오늘의 날씨")
         .frame(width: 300, height: 200, alignment: .center)
         .cornerRadius(10.0)
-        Spacer()
         .onAppear {
             Task {
-                await self.viewModel.fetchWeather(city: city)
+                await self.viewModel.fetchWeather(city: self.city)
             }.dispose(bag: self.bag)
         }
         .onDisappear {

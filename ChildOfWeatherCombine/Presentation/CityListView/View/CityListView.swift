@@ -10,9 +10,7 @@ import SwiftUI
 struct CityListView: View {
     
     @ObservedObject var viewModel: CityListViewModel
-    @State private var isSeached: Bool = false
     @State private var searchQuery: String = ""
-    private var clickedCity: City = City.EMPTY
     private var bag = CancelTaskBag()
     
     init(viewModel: CityListViewModel) {
@@ -21,6 +19,7 @@ struct CityListView: View {
     
     var body: some View {
         NavigationListView()
+            .searchable(text: $searchQuery)
             .onChange(of: searchQuery, perform: { querys in
                 if !querys.isEmpty {
                     self.viewModel.searchedCities = self.viewModel.cities.filter { city in
@@ -59,10 +58,10 @@ struct CityListView: View {
                             startPoint: .leading,
                             endPoint: .trailing
                         )
+                        .opacity(0.3)
                     )
                 }
             }
-            .searchable(text: $searchQuery)
             .navigationTitle("도시")
             .shadow(color: Color.gray, radius: 10, x: 0.0, y: 10.0)
         }
