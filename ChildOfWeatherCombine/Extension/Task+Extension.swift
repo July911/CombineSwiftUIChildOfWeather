@@ -12,30 +12,13 @@ extension Task: Cancelable {
 }
 
 protocol Cancelable {
+    
     func cancel()
 }
 
 extension Task {
+    
     func dispose(bag: CancelTaskBag) {
         bag.add(task: self)
-    }
-}
-
-final class CancelTaskBag {
-    private var tasks: [any Cancelable] = []
-    
-    public init() {}
-
-    public func add(task: any Cancelable) {
-        tasks.append(task)
-    }
-
-    public func cancel() {
-        tasks.forEach { $0.cancel() }
-        tasks.removeAll()
-    }
-    
-    deinit {
-        cancel()
     }
 }

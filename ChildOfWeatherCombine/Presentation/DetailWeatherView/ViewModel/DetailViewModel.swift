@@ -9,10 +9,12 @@ import Foundation
 import Combine
 
 protocol DetailViewModelInput {
+    
     var weather: TodayWeather { get set }
 }
 
 protocol DetailViewModelOutput {
+    
     func fetchWeather(city: City) async
 }
 

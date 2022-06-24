@@ -36,6 +36,7 @@
 		18CE4F462855E0FF004AAD32 /* WeatherInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CE4F452855E0FF004AAD32 /* WeatherInformation.swift */; };
 		18D35FB12862FB5600E9E4B7 /* AppDIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D35FB02862FB5600E9E4B7 /* AppDIContainer.swift */; };
 		18D35FB32862FDDE00E9E4B7 /* CityListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D35FB22862FDDE00E9E4B7 /* CityListCell.swift */; };
+		18D3C29C2865992A0000B38F /* CancelTaskBag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D3C29B2865992A0000B38F /* CancelTaskBag.swift */; };
 		18DA9BA7286480D1005292F2 /* Task+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DA9BA6286480D1005292F2 /* Task+Extension.swift */; };
 		18DA9BA92864861F005292F2 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DA9BA82864861F005292F2 /* String+Extension.swift */; };
 		18DA9BAD28648730005292F2 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 18DA9BAF28648730005292F2 /* Localizable.strings */; };
@@ -72,6 +73,7 @@
 		18CE4F452855E0FF004AAD32 /* WeatherInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherInformation.swift; sourceTree = "<group>"; };
 		18D35FB02862FB5600E9E4B7 /* AppDIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDIContainer.swift; sourceTree = "<group>"; };
 		18D35FB22862FDDE00E9E4B7 /* CityListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityListCell.swift; sourceTree = "<group>"; };
+		18D3C29B2865992A0000B38F /* CancelTaskBag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CancelTaskBag.swift; sourceTree = "<group>"; };
 		18DA9BA6286480D1005292F2 /* Task+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task+Extension.swift"; sourceTree = "<group>"; };
 		18DA9BA82864861F005292F2 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		18DA9BAE28648730005292F2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -229,6 +231,7 @@
 			isa = PBXGroup;
 			children = (
 				18CB344A285EF41700874689 /* DataFomatter.swift */,
+				18D3C29B2865992A0000B38F /* CancelTaskBag.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -423,6 +426,7 @@
 				188539162857BDAA009572EF /* Publisher+Extension.swift in Sources */,
 				18A821A4285E979800563FC3 /* City.swift in Sources */,
 				18DA9BA7286480D1005292F2 /* Task+Extension.swift in Sources */,
+				18D3C29C2865992A0000B38F /* CancelTaskBag.swift in Sources */,
 				18CE4F462855E0FF004AAD32 /* WeatherInformation.swift in Sources */,
 				18D35FB12862FB5600E9E4B7 /* AppDIContainer.swift in Sources */,
 				18A821A2285E977500563FC3 /* DefaultCityListRepository.swift in Sources */,

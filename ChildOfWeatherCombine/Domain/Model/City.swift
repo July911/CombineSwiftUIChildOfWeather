@@ -21,6 +21,7 @@ extension City: Identifiable {
 }
 
 extension City {
+    
     static let EMPTY = City(
         id: .zero,
         name: "",
@@ -31,10 +32,12 @@ extension City {
 }
 
 struct Coord: Codable {
+    
     let lat, lon: Double
 }
 
 extension City {
+    
     var koreanName: City {
         var city = self
         city.name = city.name.localized

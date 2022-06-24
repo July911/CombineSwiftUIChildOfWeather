@@ -9,11 +9,13 @@ import Foundation
 import Combine
 
 protocol CityListViewModelInput {
+    
     func fetchCityList() async
     func searchCityList(cityName: String) async
 }
 
 protocol CityListViewModelOutput {
+    
     var cities: [City] { get }
 }
 

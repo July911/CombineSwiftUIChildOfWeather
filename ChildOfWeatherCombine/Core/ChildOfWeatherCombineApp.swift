@@ -9,6 +9,7 @@ import SwiftUI
 
 @main
 struct ChildOfWeatherCombineApp: App {
+    
     var body: some Scene {
         WindowGroup {
             let viewModel = AppDIContainer.shared.cityListDependencies()
