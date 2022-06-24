@@ -22,11 +22,7 @@ final class DefaultWeatherRepository: WeatherRepository {
         guard let decoded = try? await self.service.request(requestType: request) else {
             return Just(TodayWeather.empty).eraseToAnyPublisher()
         }
-        
-//        guard let weather = decoded as? WeatherInformation else {
-//            return Just(TodayWeather.empty).eraseToAnyPublisher()
-//        }
-        
+
         return Just(decoded.toDomain()).eraseToAnyPublisher()
     }
 }

@@ -21,7 +21,6 @@ struct CityListView: View {
     
     var body: some View {
         NavigationListView()
-            .searchable(text: $searchQuery)
             .onChange(of: searchQuery, perform: { querys in
                 if !querys.isEmpty {
                     self.viewModel.searchedCities = self.viewModel.cities.filter { city in
@@ -52,10 +51,18 @@ struct CityListView: View {
                         )
                     } label: {
                         CityListCell(city: city)
+                        
                     }
+                    .listRowBackground(
+                        LinearGradient(
+                            colors: [Color.blue, Color.red, Color.white],
+                            startPoint: .leading,
+                            endPoint: .trailing
+                        )
+                    )
                 }
             }
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .searchable(text: $searchQuery)
             .navigationTitle("도시")
             .shadow(color: Color.gray, radius: 10, x: 0.0, y: 10.0)
         }

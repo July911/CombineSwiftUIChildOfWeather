@@ -15,26 +15,24 @@ struct DetailWeatherView: View {
     
     var body: some View {
         ZStack {
-            
-            Rectangle()
-                .background(
-                    LinearGradient(
-                        colors: [Color.gray, Color.white],
-                        startPoint: .leading, endPoint: .trailing)
-                )
-                .opacity(0.3)
-                .shadow(color: Color.gray, radius: 10, x: 0, y: 10.0)
-                .cornerRadius(10)
-            
+            RectangleView()
             HStack {
                 VStack {
                     Text("오늘의 일출은?\n오전 \(self.viewModel.weather.sunrise.toKoreanTime.description)시")
+                        .fontWeight(.bold)
+                        .font(.body)
                     Text("오늘의 일몰은?\n오후 \(self.viewModel.weather.sunset.toKoreanTime.description)시")
+                        .fontWeight(.bold)
+                        .font(.body)
                 }
                 
                 VStack {
                     Text("오늘의 최고온도는?\n\(self.viewModel.weather.maxTemperature.toCelsius.description)도")
+                        .fontWeight(.bold)
+                        .font(.body)
                     Text("오늘의 최저온도는?\n\(self.viewModel.weather.minTemperature.toCelsius.description)도")
+                        .fontWeight(.bold)
+                        .font(.body)
                 }
             }
             .font(.callout)
@@ -50,6 +48,18 @@ struct DetailWeatherView: View {
         .onDisappear {
             self.bag.cancel()
         }
+    }
+    
+    func RectangleView() -> some View {
+        return  Rectangle()
+            .background(
+                LinearGradient(
+                    colors: [Color.blue,Color.red,Color.white],
+                    startPoint: .leading, endPoint: .trailing)
+            )
+            .opacity(0.3)
+            .shadow(color: Color.gray, radius: 10, x: 0, y: 10.0)
+            .cornerRadius(10)
     }
 }
 

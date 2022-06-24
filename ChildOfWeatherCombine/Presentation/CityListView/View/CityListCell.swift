@@ -23,13 +23,6 @@ struct CityListCell: View {
             Spacer()
             
         }
-        .background(
-            LinearGradient(
-                colors: [Color.clear, Color.gray, Color.white],
-                startPoint: .leading,
-                endPoint: .trailing
-            )
-        )
     }
 }
 
