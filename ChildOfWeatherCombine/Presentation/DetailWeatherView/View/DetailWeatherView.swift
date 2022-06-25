@@ -10,6 +10,8 @@ import SwiftUI
 struct DetailWeatherView: View {
     
     @ObservedObject var viewModel: DetailViewModel
+    //TODO: APPDI에서 같은 ViewModel을 각 WeatherDetailView에 넣어주었음
+    // 같은 ViewModel인스턴스를 사용함
     let city: City
     var bag = CancelTaskBag()
     

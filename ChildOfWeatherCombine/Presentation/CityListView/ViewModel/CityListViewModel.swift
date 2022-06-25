@@ -48,7 +48,8 @@ final class CityListViewModel: ObservableObject, CityListViewModelInput, CityLis
                 cities.filter { city in
                     city.name.first?.description == cityName
                 }
-            }.assign(to: \.searchedCities, on: self)
+            }
+            .assign(to: \.searchedCities, on: self)
             .store(in: &self.bag)
     }
 }

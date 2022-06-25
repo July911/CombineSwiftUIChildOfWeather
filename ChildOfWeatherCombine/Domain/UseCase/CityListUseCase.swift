@@ -18,8 +18,9 @@ final class CityListUseCase {
     
     func fetchCities() async -> AnyPublisher<[City], Never> {
         return await self.repository.fetchCityList()
-            .map { kk in
-                kk.map { $0.koreanName }
-            }.eraseToAnyPublisher()
+            .map { cities in
+                cities.map { $0.koreanName }
+            }
+            .eraseToAnyPublisher()
     }
 }

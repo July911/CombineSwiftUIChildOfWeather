@@ -42,6 +42,7 @@ final class DetailViewModel: ObservableObject, DetailViewModelInput, DetailViewM
                     self?.weather = todayWeather
                 }
             }
-            ).store(in: &self.cancalBag)
+            )
+            .store(in: &self.cancalBag)
     }
 }
