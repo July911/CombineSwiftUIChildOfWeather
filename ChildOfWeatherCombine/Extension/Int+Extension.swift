@@ -12,7 +12,7 @@ extension Int {
     var toKoreanTime: String {
         let time = Date(timeIntervalSince1970: TimeInterval(self))
         let formatter = Formatter.shared.dateformatter
-        formatter.dateFormat = "HH: mm"
+        formatter.dateFormat = "HH:mm"
         
         return formatter.string(from: time)
     }

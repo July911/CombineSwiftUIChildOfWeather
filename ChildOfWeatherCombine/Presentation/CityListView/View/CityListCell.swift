@@ -14,10 +14,10 @@ struct CityListCell: View {
     var body: some View {
         HStack {
             VStack {
-                Text("도시의 이름은?")
                 Text(city.name.localized)
-                    .fontWeight(.light)
+                    .fontWeight(.heavy)
                     .font(.callout)
+                    .foregroundColor(Color.white)
             }
             
             Spacer()

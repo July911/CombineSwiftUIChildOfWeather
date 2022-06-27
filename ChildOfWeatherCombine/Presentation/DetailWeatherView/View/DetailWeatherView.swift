@@ -16,34 +16,37 @@ struct DetailWeatherView: View {
     var bag = CancelTaskBag()
     
     var body: some View {
-        NavigationView {
-            ZStack {
-                RectangleView()
-                HStack {
-                    VStack {
-                        Text("오늘의 일출은?\n오전 \(self.viewModel.weather.sunrise.toKoreanTime.description)시")
-                            .fontWeight(.bold)
-                            .font(.body)
-                        Text("오늘의 일몰은?\n오후 \(self.viewModel.weather.sunset.toKoreanTime.description)시")
-                            .fontWeight(.bold)
-                            .font(.body)
-                    }
-                    
-                    VStack {
-                        Text("오늘의 최고온도는?\n\(self.viewModel.weather.maxTemperature.toCelsius.description)도")
-                            .fontWeight(.bold)
-                            .font(.body)
-                        Text("오늘의 최저온도는?\n\(self.viewModel.weather.minTemperature.toCelsius.description)도")
-                            .fontWeight(.bold)
-                            .font(.body)
-                    }
-                }
+        ZStack(alignment: .top) {
+            RectangleView()
+                .frame(height: 800)
+            VStack {
+                Text("오늘의 날씨")
+                    .font(.title)
+                    .fontWeight(.heavy)
+                Text("오늘의 일출은 오전 \(self.viewModel.weather.sunrise.toKoreanTime.description)입니다.")
+                    .fontWeight(.bold)
+                    .font(.body)
+                    .foregroundColor(Color.white)
+                    .padding()
+                Text("오늘의 일몰은 오후 \(self.viewModel.weather.sunset.toKoreanTime.description)입니다.")
+                    .fontWeight(.bold)
+                    .font(.body)
+                    .foregroundColor(Color.white)
+                    .padding()
+                Text("오늘의 최고온도는 \(self.viewModel.weather.maxTemperature.toCelsius.description)도입니다.")
+                    .fontWeight(.bold)
+                    .font(.body)
+                    .foregroundColor(Color.white)
+                    .padding()
+                Text("오늘의 최저온도는 \(self.viewModel.weather.minTemperature.toCelsius.description)도입니다.")
+                    .fontWeight(.bold)
+                    .font(.body)
+                    .foregroundColor(Color.white)
+                    .padding()
             }
         }
-        Spacer()
-        .navigationTitle("오늘의 날씨")
-        .frame(width: 300, height: 200, alignment: .center)
         .cornerRadius(10.0)
+        Spacer()
         .onAppear {
             Task {
                 await self.viewModel.fetchWeather(city: self.city)
@@ -58,10 +61,10 @@ struct DetailWeatherView: View {
         return  Rectangle()
             .background(
                 LinearGradient(
-                    colors: [Color.blue,Color.red,Color.white],
-                    startPoint: .leading, endPoint: .trailing)
+                    colors: [Color.black, Color.blue, Color.purple],
+                    startPoint: .top, endPoint: .bottom)
             )
-            .opacity(0.3)
+            .opacity(0.7)
             .shadow(color: Color.gray, radius: 10, x: 0, y: 10.0)
             .cornerRadius(10)
     }

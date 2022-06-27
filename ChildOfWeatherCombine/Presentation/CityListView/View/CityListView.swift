@@ -54,11 +54,11 @@ struct CityListView: View {
                     }
                     .listRowBackground(
                         LinearGradient(
-                            colors: [Color.blue, Color.red, Color.white],
+                            colors: [Color(#colorLiteral(red: 0, green: 0.09556948394, blue: 0.5171918869, alpha: 1)), Color(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 1))],
                             startPoint: .leading,
                             endPoint: .trailing
                         )
-                        .opacity(0.3)
+                        .opacity(0.6)
                     )
                 }
             }
