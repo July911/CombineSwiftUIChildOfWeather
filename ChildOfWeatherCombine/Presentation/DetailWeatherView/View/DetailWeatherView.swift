@@ -16,33 +16,26 @@ struct DetailWeatherView: View {
     var bag = CancelTaskBag()
     
     var body: some View {
-        ZStack(alignment: .top) {
+        ZStack(alignment: .center) {
             RectangleView()
                 .frame(height: 800)
             VStack {
                 Text("오늘의 날씨")
                     .font(.title)
                     .fontWeight(.heavy)
+                    .foregroundColor(Color.white)
                 Text("오늘의 일출은 오전 \(self.viewModel.weather.sunrise.toKoreanTime.description)입니다.")
                     .fontWeight(.bold)
-                    .font(.body)
-                    .foregroundColor(Color.white)
-                    .padding()
+                    .minimumText()
                 Text("오늘의 일몰은 오후 \(self.viewModel.weather.sunset.toKoreanTime.description)입니다.")
                     .fontWeight(.bold)
-                    .font(.body)
-                    .foregroundColor(Color.white)
-                    .padding()
+                    .minimumText()
                 Text("오늘의 최고온도는 \(self.viewModel.weather.maxTemperature.toCelsius.description)도입니다.")
                     .fontWeight(.bold)
-                    .font(.body)
-                    .foregroundColor(Color.white)
-                    .padding()
+                    .minimumText()
                 Text("오늘의 최저온도는 \(self.viewModel.weather.minTemperature.toCelsius.description)도입니다.")
                     .fontWeight(.bold)
-                    .font(.body)
-                    .foregroundColor(Color.white)
-                    .padding()
+                    .minimumText()
             }
         }
         .cornerRadius(10.0)

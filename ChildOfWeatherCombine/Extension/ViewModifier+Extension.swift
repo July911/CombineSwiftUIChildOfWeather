@@ -8,18 +8,13 @@
 import Foundation
 import SwiftUI
 
-struct GradientColor: ViewModifier {
+struct FontSizingMinimum: ViewModifier {
     
     func body(content: Content) -> some View {
         content
-            .background(
-                LinearGradient(
-                    colors: [Color.red, Color.blue, Color.white],
-                    startPoint: .leading,
-                    endPoint: .trailing
-                )
-                .opacity(0.3)
-            )
+            .font(.caption)
+            .foregroundColor(Color.white)
+            .padding()
     }
 }
 
