@@ -113,14 +113,14 @@
 			path = CityListView;
 			sourceTree = "<group>";
 		};
-		188539022857B77D009572EF /* APICall */ = {
+		188539022857B77D009572EF /* Network */ = {
 			isa = PBXGroup;
 			children = (
 				188539132857B998009572EF /* APICaller */,
 				1885390C2857B90A009572EF /* CityWeatherRequest */,
 				188539092857B8C8009572EF /* Interface */,
 			);
-			path = APICall;
+			path = Network;
 			sourceTree = "<group>";
 		};
 		188539092857B8C8009572EF /* Interface */ = {
@@ -261,16 +261,16 @@
 		18CE4F3228557069004AAD32 /* ChildOfWeatherCombine */ = {
 			isa = PBXGroup;
 			children = (
-				18DA9BAA28648638005292F2 /* Localization */,
+				18CE4F442855E0E5004AAD32 /* Core */,
 				18D35FAF2862FB4500E9E4B7 /* DIContainer */,
 				18CB3443285EF1FB00874689 /* Utility */,
-				18CE4F442855E0E5004AAD32 /* Core */,
 				188539142857BD9A009572EF /* Extension */,
-				188539022857B77D009572EF /* APICall */,
+				188539022857B77D009572EF /* Network */,
 				18CE4F432855723B004AAD32 /* Data */,
 				18CE4F4128557232004AAD32 /* Domain */,
 				18CE4F4228557236004AAD32 /* Presentation */,
 				18CE4F372855706B004AAD32 /* Assets.xcassets */,
+				18DA9BAA28648638005292F2 /* Localization */,
 				18CE4F392855706B004AAD32 /* Preview Content */,
 			);
 			path = ChildOfWeatherCombine;
